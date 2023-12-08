@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <form id="myForm">
+        <h2>Form Data Diri</h2>
+        <label for="name">Nama Lengkap:</label
+        ><input type="text" id="name" /><br />
+        <label for="">Tempat, Tanggal Lahir:</label
+        ><input type="text" id="birthPlace" /><input
+          type="date"
+          name="birthdate"
+          id="birthdate"
+        /><br />
+        <label for="">Alamat</label><input type="text" id="address" /><br />
+        <label for="">No.Telp.HP</label><input type="text" id="phone" /><br />
+        <label for="">Jenis Kelamin</label
+        ><input type="radio" name="gender" id="laki" value="Laki-laki" /><label
+          for="laki"
+          >Laki-laki</label
+        ><input
+          type="radio"
+          name="gender"
+          id="perempuan"
+          value="Perempuan"
+        /><label for="perempuan">Perempuan</label><br />
+        <label for="">Agama</label
+        ><select name="religion" id="religion">
+          <option value="islam">Islam</option>
+          <option value="kristen protestan">Kristen Protestan</option>
+          <option value="kristen katolik">Kristen Katolik</option>
+          <option value="buddha">Buddha</option>
+          <option value="hindu">Hindu</option>
+        </select>
+        <br />
+        <label for="">Hobi</label>
+        <input
+          type="checkbox"
+          name="hobbies"
+          id="bacabuku"
+          value="Baca Buku"
+        /><label for="bacabuku">Baca Buku</label>
+        <input
+          type="checkbox"
+          name="hobbies"
+          id="olahraga"
+          value="Olah Raga"
+        /><label for="olahraga">Olah Raga</label>
+        <input
+          type="checkbox"
+          name="hobbies"
+          id="maingame"
+          value="Main Game"
+        /><label for="maingame">Main Game</label>
+        <input
+          type="checkbox"
+          name="hobbies"
+          id="hiking"
+          value="Hiking"
+        /><label for="hiking">Hiking</label>
+        <br />
+
+        <button type="button" onclick="showFormData()">Tampilkan</button>
+        <button type="reset">Reset</button>
+      </form>
+    </div>
+
+    <script>
+      function showFormData() {
+        var name = document.getElementById("name").value;
+        var birthPlace = document.getElementById("birthPlace").value;
+        var birthdate = document.getElementById("birthdate").value;
+        var address = document.getElementById("address").value;
+        var phone = document.getElementById("phone").value;
+        var gender = document.querySelector('input[name="gender"]:checked');
+        var selectedGender = gender ? gender.value : "";
+
+        var religion = document.getElementById("religion");
+        var selectedReligion = religion.options[religion.selectedIndex].value;
+
+        var hobbies = document.querySelectorAll(
+          'input[name="hobbies"]:checked'
+        );
+        var selectedHobbies = Array.from(hobbies)
+          .map(hobby => hobby.value)
+          .join(", ");
+
+        var message = `Nama Lengkap: ${name}\nTempat, Tanggal Lahir: ${birthPlace}, ${birthdate}\nAlamat: ${address}\nNo.Telp.HP: ${phone}\nJenis Kelamin: ${selectedGender}\nAgama: ${selectedReligion}\nHobi: ${selectedHobbies}`;
+
+        alert(message);
+      }
+    </script>
+  </body>
+</html>
